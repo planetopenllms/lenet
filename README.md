@@ -102,7 +102,7 @@ the weights (& biases) get saved to `lenet5.pth`
 
 To eval(uate) the trained model use:
 
-   $ python ./eval.py
+    $ python ./eval.py
 
 
 
