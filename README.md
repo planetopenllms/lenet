@@ -74,7 +74,7 @@ and beginners get up and running in minutes!
 
 Step 0:  To download the MNIST dataset - 60000 (grayscale) images in 28x28 (and labels) for training and 10000 for testing - use:
 
-   $ python ./prepare.py
+    $ python ./prepare.py
 
 
 
@@ -82,16 +82,16 @@ Step 0:  To download the MNIST dataset - 60000 (grayscale) images in 28x28 (and 
 
 To print the model summaries use:
 
-   $ python ./models.py
+    $ python ./models.py
 
-See [SUMMARY.md] for sample output.
+See [SUMMARY.md](SUMMARY.md) for sample output.
 
 
 ### Train the Model (& Save the Weights)
 
 To train a model use:
 
-   $ python ./train.py
+    $ python ./train.py
 
 Note - at the end of the training (default is 10 epochs)
 the weights (& biases) get saved to `lenet5.pth`
