@@ -2,11 +2,17 @@
 
 Various variants of LeNet v5 & friends
 
+![](lenet.png)
+
+
+
+
 ## LeNet v5
 
 The classic (original) LeNet v5
 has two convolutions layers
 and uses tanh activation and average pooling.
+
 
 A more "modern" version
 changes tanh activation to relu and
@@ -22,7 +28,7 @@ Note: All these variants
 have a total of 61_706 parameters.
 About 0.23 MB or 240.10 KBs (if you assume 4 bytes for a float32 for a parameter).
 
-The biggie is the fully connected 400 (16*5*5) to 120 layer
+The biggie is the fully connected 400 (16x5x5) to 120 layer
 with 400*120 parameters, that is, 48_000 (plus 120 biases).
 
 The summary of the classic model reads:
@@ -54,8 +60,9 @@ might take weeks of research and programming effort
 with tensors, auto gradients / differentiation,
 data loaders, and much more).
 
-Today LeNetv5 is the hello world sample in the the pytorch 60 minute
-introduction blitz and beginners get up and running in minutes!
+Today LeNetv5 is the hello world sample in
+[the pytorch 60 minute introduction blitz](https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html)
+and beginners get up and running in minutes!
 
 
 
