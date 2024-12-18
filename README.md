@@ -107,3 +107,44 @@ To eval(uate) the trained model use:
 
 
 That's it.
+
+
+
+## Bonus - AlexNet (Anno 2012) - From 61,706 Weights to 61,100,840
+
+
+The award-winning AlexNet is basically a LeNet5 scaled up 1000x and
+introduces relu activation, dropout layers, and more to the world (of deep neural networks).
+The summary of the model reads:
+
+
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 64, 55, 55]          23,296
+              ReLU-2           [-1, 64, 55, 55]               0
+         MaxPool2d-3           [-1, 64, 27, 27]               0
+            Conv2d-4          [-1, 192, 27, 27]         307,392
+              ReLU-5          [-1, 192, 27, 27]               0
+         MaxPool2d-6          [-1, 192, 13, 13]               0
+            Conv2d-7          [-1, 384, 13, 13]         663,936
+              ReLU-8          [-1, 384, 13, 13]               0
+            Conv2d-9          [-1, 256, 13, 13]         884,992
+             ReLU-10          [-1, 256, 13, 13]               0
+           Conv2d-11          [-1, 256, 13, 13]         590,080
+             ReLU-12          [-1, 256, 13, 13]               0
+        MaxPool2d-13            [-1, 256, 6, 6]               0
+AdaptiveAvgPool2d-14            [-1, 256, 6, 6]               0
+          Dropout-15                 [-1, 9216]               0
+           Linear-16                 [-1, 4096]      37,752,832
+             ReLU-17                 [-1, 4096]               0
+          Dropout-18                 [-1, 4096]               0
+           Linear-19                 [-1, 4096]      16,781,312
+             ReLU-20                 [-1, 4096]               0
+           Linear-21                 [-1, 1000]       4,097,000
+================================================================
+Total params: 61,100,840
+```
+
+

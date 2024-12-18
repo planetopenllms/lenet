@@ -37,6 +37,41 @@ class LeNet5(nn.Module):
         return x
 
 
+###############
+#  alt. version with nn.Sequentail
+#  note - input x MUST always be batch e.g (1,1,32,32) NOT (1,32,32)
+#      nn.Flatten will NOT work on single inputs
+#      resulting in
+#        RuntimeError: mat1 and mat2 shapes cannot be multiplied (16x25 and 400x120)
+
+class LeNet5Seq(nn.Module):
+    def __init__(self):
+        super(LeNet5Seq, self).__init__()
+
+        self.layers = nn.Sequential(
+            # Layer 1: Convolutional layer with 6 filters of size 5x5
+            nn.Conv2d(1, 6, kernel_size=5),
+            nn.Tanh(),
+            nn.AvgPool2d(kernel_size=2, stride=2),  # Subsampling (avg pooling)
+            # Layer 2: Convolutional layer with 16 filters of size 5x5
+            nn.Conv2d(6, 16, kernel_size=5),
+            nn.Tanh(),
+            nn.AvgPool2d(kernel_size=2, stride=2),  # Subsampling (avg pooling)
+            nn.Flatten(),
+            # Fully connected layers
+            nn.Linear(16 * 5 * 5, 120),  # Flattened output from previous layer
+            nn.Tanh(),
+            nn.Linear(120, 84),
+            nn.Tanh(),
+            nn.Linear(84, 10)    # Output layer with 10 classes
+          )
+
+    def forward(self, x):
+        # Forward pass through the network
+        return self.layers( x )
+
+
+
 ###
 #  what's different?
 #    1) change activation from tanh to relu
@@ -98,6 +133,45 @@ class LeNet5v2b(nn.Module):
 
 
 
+
+###############
+#  alt. version with padding 2 in conv1  for 28x28 input_size
+#
+#  note - input x MUST be batch e.g (1,1,28,28) NOT (1,28,28)
+#      nn.Flatten will NOT work on single inputs
+#      resulting in
+#        RuntimeError: mat1 and mat2 shapes cannot be multiplied (16x25 and 400x120)
+
+class LeNet5_28x28(nn.Module):
+    def __init__(self):
+        super(LeNet5_28x28, self).__init__()
+
+        self.layers = nn.Sequential(
+            # Layer 1: Convolutional layer with 6 filters of size 5x5
+            nn.Conv2d(1, 6, kernel_size=5, padding=2),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),  # Subsampling (max pooling)
+            # Layer 2: Convolutional layer with 16 filters of size 5x5
+            nn.Conv2d(6, 16, kernel_size=5),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),  # Subsampling (max pooling)
+            nn.Flatten(),
+            # Fully connected layers
+            nn.Linear(16 * 5 * 5, 120),  # Flattened output from previous layer
+            nn.ReLU(),
+            nn.Linear(120, 84),
+            nn.ReLU(),
+            nn.Linear(84, 10)    # Output layer with 10 classes
+          )
+
+    def forward(self, x):
+        # Forward pass through the network
+        return self.layers( x )
+
+
+
+
+
 if __name__ == '__main__':
     # Print the model summaries
     from torchsummary import summary
@@ -121,8 +195,11 @@ if __name__ == '__main__':
 
 
     print_model( LeNet5(),    input_size=(1,32,32) )
+    print_model( LeNet5Seq(), input_size=(1,32,32) )
     print_model( LeNet5v2(),  input_size=(1,32,32) )
     print_model( LeNet5v2b(), input_size=(1,32,32) )
+
+    print_model( LeNet5_28x28(), input_size=(1,28,28 ))
     print("bye")
 
 
