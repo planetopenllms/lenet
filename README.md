@@ -7,7 +7,7 @@ Various variants of LeNet v5 & friends
 
 
 
-## LeNet v5
+## LeNet v5 (Anno 1995)
 
 The classic (original) LeNet v5
 has two convolutions layers
@@ -115,6 +115,14 @@ That's it.
 
 The award-winning AlexNet is basically a LeNet5 scaled up 1000x and
 introduces relu activation, dropout layers, and more to the world (of deep neural networks).
+
+![](lenet-to-alexnet.png)
+
+> AlexNet is much deeper than the comparatively small LeNet-5.
+> AlexNet consists of eight layers: five convolutional layers,
+> two fully connected hidden layers, and one fully connected output layer.
+
+
 The summary of the model reads:
 
 

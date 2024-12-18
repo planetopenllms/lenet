@@ -50,19 +50,15 @@ class LeNet5Seq(nn.Module):
 
         self.layers = nn.Sequential(
             # Layer 1: Convolutional layer with 6 filters of size 5x5
-            nn.Conv2d(1, 6, kernel_size=5),
-            nn.Tanh(),
+            nn.Conv2d(1, 6, kernel_size=5), nn.Tanh(),
             nn.AvgPool2d(kernel_size=2, stride=2),  # Subsampling (avg pooling)
             # Layer 2: Convolutional layer with 16 filters of size 5x5
-            nn.Conv2d(6, 16, kernel_size=5),
-            nn.Tanh(),
+            nn.Conv2d(6, 16, kernel_size=5), nn.Tanh(),
             nn.AvgPool2d(kernel_size=2, stride=2),  # Subsampling (avg pooling)
             nn.Flatten(),
             # Fully connected layers
-            nn.Linear(16 * 5 * 5, 120),  # Flattened output from previous layer
-            nn.Tanh(),
-            nn.Linear(120, 84),
-            nn.Tanh(),
+            nn.Linear(16 * 5 * 5, 120), nn.Tanh(),  # Flattened output from previous layer
+            nn.Linear(120, 84), nn.Tanh(),
             nn.Linear(84, 10)    # Output layer with 10 classes
           )
 
@@ -148,19 +144,15 @@ class LeNet5_28x28(nn.Module):
 
         self.layers = nn.Sequential(
             # Layer 1: Convolutional layer with 6 filters of size 5x5
-            nn.Conv2d(1, 6, kernel_size=5, padding=2),
-            nn.ReLU(),
+            nn.Conv2d(1, 6, kernel_size=5, padding=2), nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),  # Subsampling (max pooling)
             # Layer 2: Convolutional layer with 16 filters of size 5x5
-            nn.Conv2d(6, 16, kernel_size=5),
-            nn.ReLU(),
+            nn.Conv2d(6, 16, kernel_size=5), nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2),  # Subsampling (max pooling)
             nn.Flatten(),
             # Fully connected layers
-            nn.Linear(16 * 5 * 5, 120),  # Flattened output from previous layer
-            nn.ReLU(),
-            nn.Linear(120, 84),
-            nn.ReLU(),
+            nn.Linear(16 * 5 * 5, 120), nn.ReLU(),  # Flattened output from previous layer
+            nn.Linear(120, 84), nn.ReLU(),
             nn.Linear(84, 10)    # Output layer with 10 classes
           )
 

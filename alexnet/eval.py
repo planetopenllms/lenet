@@ -4,7 +4,7 @@ from PIL import Image
 
 
 ### local imports
-from model import model
+from models import model
 
 
 
